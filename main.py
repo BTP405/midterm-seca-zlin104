@@ -32,7 +32,7 @@ class TestCourseManagementSystem(unittest.TestCase):
         self.course1.add_assessment(self.assignment1)
         self.course1.add_assessment(self.exam1)
 
-    def test_enroll_student(self): # 4 marks
+    def test_enroll_student(self,): # 4 marks
         self.assertIn(self.student1, self.course1.enrolled_students)
         self.assertIn(self.student2, self.course1.enrolled_students)
         self.assertIn(self.student2, self.course2.enrolled_students)
@@ -45,11 +45,11 @@ class TestCourseManagementSystem(unittest.TestCase):
 
     def test_submit_grade(self): # 6 marks
         self.student1.submit_grade(self.course1, self.assignment1, 90)
-        self.assertEqual(self.student1.grades[self.course1.course_name][self.assignment1], 90)
+        self.assertEqual(self.student1.grades[self.course1.course_name][self.assignment1.assignment_type], 90)
         self.student2.submit_grade(self.course1, self.assignment1, 85)
-        self.assertEqual(self.student2.grades[self.course1.course_name][self.assignment1], 85)
+        self.assertEqual(self.student2.grades[self.course1.course_name][self.assignment1.assignment_type], 85)
         self.student2.submit_grade(self.course1, self.exam1, 75)
-        self.assertEqual(self.student2.grades[self.course1.course_name][self.exam1], 75)
+        self.assertEqual(self.student2.grades[self.course1.course_name][self.exam1.assignment_type], 75)
 
 if __name__ == '__main__':
     unittest.main()

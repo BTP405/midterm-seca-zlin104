@@ -16,6 +16,9 @@ class Instructor:
     Methods:
         assign_course(course): Assigns a course to the instructor.
     """
+    name = ""
+    instructor_id = 0
+    assigned_courses = []
 
     def __init__(self, name, instructor_id):
         """
@@ -25,7 +28,8 @@ class Instructor:
             name (str): The name of the instructor.
             instructor_id (int): The unique ID of the instructor.
         """
-        pass
+        self.name = name
+        self.instructor_id = instructor_id
 
 
     def assign_course(self, course):
@@ -38,6 +42,6 @@ class Instructor:
         Returns:
             None
         """
-        pass
+        self.assigned_courses.append(course)
 
 

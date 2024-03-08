@@ -3,7 +3,7 @@ Module for defining Student class.
 
 This module provides a class for representing students, their enrolled courses, and grades.
 """
-
+import course 
 
 class Student:
     """
@@ -20,6 +20,10 @@ class Student:
         drop_course(course): Drops a course from the student's enrollment.
         submit_grade(course, assessment, grade): Submits a grade for a student in a course.
     """
+    name = ""
+    student_id = 0
+    enrolled_courses = []
+    grades = {}
 
     def __init__(self, name, student_id):
         """
@@ -29,7 +33,8 @@ class Student:
             name (str): The name of the student.
             student_id (int): The unique ID of the student.
         """
-        pass
+        self.name = name
+        self.student_id = student_id
 
 
     def enroll_course(self, course):
@@ -42,7 +47,7 @@ class Student:
         Returns:
             None
         """
-        pass
+        course.add_student(self)
 
     def drop_course(self, course):
         """
@@ -54,7 +59,10 @@ class Student:
         Returns:
             None
         """
-        pass
+        course.remove_student(self)
+        if course in self.enrolled_courses:
+            self.enrolled_courses.remove(course)
+
 
 
     def submit_grade(self, course, assessment, grade):
@@ -69,4 +77,7 @@ class Student:
         Returns:
             None
         """
-        pass
+        self.grades[course.course_name] = grade
+        self.grades['assignment_type'] = assessment
+        self.grades['grade'] = grade
+
